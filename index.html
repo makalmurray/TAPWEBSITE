@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAP WEBSITE - Home</title>
+<link rel="stylesheet" href="TAP2CSS.css">
+</head>
+<body>
+	<header>
+	<h1><a href="TAP2LOGIN.html"><img src="https://media.giphy.com/media/m0TCD2Mzo54O4RvtLA/giphy.gif" alt="TAP LOGO" style="width: 314.5px; height: 126.5‬px; float: left;"></a>TECHNOLOGY<br>ADVENTAGE<br>PROGRAM</h1>
+	</header>
+	
+	<section>
+	<div class="topnav" id="myTopnav">
+  <a href="index.html" class="active">Home</a>
+  <a href="TAP2ABOUTUS.html">About Us</a>
+  <a href="TAP2PARTNERS.html">Partners</a>
+  <a onclick="openNav()">Logout</a>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+</section>
+	<br>
+	<section>
+		<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+	  <script>
+function openNav() {
+  document.getElementById("myNav").style.height = "100%";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}
+</script>
+		<div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content">
+    <a href="TAP2LOGOUT.html">Logout</a>
+  </div>
+</div>
+	</section>
+	
+<section>
+  <div class="loading loading--full-height"></div>
+  <p id="demo"></p>
+  <script>
+const time = new Date().getHours();
+let greeting;
+if (time < 12) {
+  greeting = "Good Morning, How Can I Help You?";
+} else if (time < 18) {
+  greeting = "Good Afternoon, How Can I Help You?";
+} else {
+  greeting = "Good Evening, How Can I Help You?";
+}
+
+document.getElementById("demo").innerHTML = greeting;
+</script>
+  <div class="wrapper">
+    <div class="actions">
+      <button class="button button1" id="start">Talk</button>
+      <button class="button button1" id="end">Reset</button>
+    </div>
+    <div id="transcript"> </div>
+  </div>
+</section>
+<section> 
+  <script>
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+const transcript_element = document.getElementById("transcript");
+const talk_button = document.getElementById("start");
+const end_button = document.getElementById("end");
+
+let p = document.createElement("p");
+transcript_element.appendChild(p);
+
+recognition.addEventListener("result", (e) =>{
+    const transcript = Array.from(e.results)
+    .map(result => result [0])
+    .map(result => result.transcript)
+    .join("");
+    p.textContent = transcript;
+    if(e.results[0].isFinal){
+        p = document.createElement("p")
+        p.textContent = transcript;
+        transcript_element.appendChild(p);
+        p.textContent = "";
+
+        if(transcript.includes("YouTube")){
+            window.open('https://www.youtube.com/')
+        }
+		       if(transcript.includes("weather")){
+            window.open('https://www.theweathernetwork.com/ca/weather/nova-scotia/halifax')
+        }
+		     if(transcript.includes("Drive")){
+            window.open('https://drive.google.com/drive/my-drive')
+        } 
+		     if(transcript.includes("cloud")){
+            window.open('https://drive.google.com/drive/my-drive')
+        } 
+		     if(transcript.includes("email")){
+            window.open('https://mail.google.com/mail/u/0/?ogbl#inbox')
+        } 
+		  if(transcript.includes("Adobe projects")){
+            window.open('https://creativecloud.adobe.com/cc/')
+        } 
+		 if(transcript.includes("Adobe Cloud")){
+            window.open('https://creativecloud.adobe.com/cc/')
+        } 
+		 if(transcript.includes("PowerSchool")){
+            window.open('https://sishrsb.ednet.ns.ca/public/')
+        } 
+	
+    }	
+});
+
+
+recognition.addEventListener("end", ()=>{
+    end_button.disabled = false;
+    talk_button.disabled = true;
+});
+talk_button.addEventListener("click", () =>{
+    end_button.disabled = false;
+    talk_button.disabled = true;
+    recognition.start();
+});
+end_button.addEventListener("click", () => {
+    end_button.disabled = true;
+    talk_button.disabled = false;
+    recognition.stop();
+});
+
+</script>
+	</section>
+	<div class="row">
+  <div class="column">
+	<div class="dropdown">
+  <img src="https://lh3.googleusercontent.com/CpVC54LbL3LeqN-tBuLykYMyvHT6VDrYP-xL8XDkuug6LvSlG-jgsgMzjwN_-VQuWxqkkLSwzHmtqzmkrU_gZScGOVHRxD-S7tZowtEEKvvnLO2kx0FHWKMuqBganp8a8Y6R3qMMOg=w2400" alt="GMAIL" style="width: 100%">
+  <div class="dropdown-content">
+  <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">Gmail</a>
+  <a href="https://postoffice.ednet.ns.ca/index.php/apps/files/?dir=/&fileid=622279">Post Office</a>
+  </div>
+</div>
+</div>
+	 <div class="column">
+		<div class="dropdown">
+  <img src="https://lh3.googleusercontent.com/9JLaZg3ElGcU7cDuRluj_yDrbquphlgSuPIqVlyhjc8OnSGERqUGAgy5f-R-yVMyHq6CcSUAYGKnlnjuJ9--Qut3fDMZRpHHaRirElCBS0v7ff3yXS7M4uw3AgSphAI7DuSDyYQw8A=w2400" alt="Drive" style="width: 100%">
+  <div class="dropdown-content">
+  <a href="https://drive.google.com/drive/u/1/my-drive">Drive</a>
+  <a href="https://docs.google.com/document/u/0/">Docs</a>
+  <a href="https://docs.google.com/presentation/u/0/">Sildes</a>
+  <a href="https://docs.google.com/spreadsheets/u/0/">Sheets</a>
+  </div>
+</div>
+		</div>
+	 <div class="column">
+	<div class="dropdown">
+  <img src="https://lh3.googleusercontent.com/s4iocT-NjNNFMaIv4zhNcXrHcNHAVzwnLr407ncBRMWH8ygVyapXEsYl-nCmHIYg00nTF-4epgS5dPUVhf0_61uTbaDhJ52-engUyyIOJ1rOTKkJKJ3Kgw6YtGInDxBI2lmLpcZOCQ=w2400" alt="CLASSROOM" style="width: 100%" >
+  <div class="dropdown-content">
+  <a href="https://classroom.google.com/u/1/h">Classroom</a>
+  <a href="https://nsvs.ednet.ns.ca/nsps/nsps39/">Moodle</a>
+  <a href="https://sishrsb.ednet.ns.ca/public/">Powerschool</a>
+  <a href="https://app.myblueprint.ca/student/dashboard">myBlueprint</a>
+  <a href="https://nshh.ednet.ns.ca/?direct=true">Homework Hub</a>
+  </div>
+</div></div></div>
+	<section>
+	<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 4</div>
+  <img src="https://lh3.googleusercontent.com/goB1XUfm5yo9eI9CXg8mveVrKipP11w8n3OLw_3IAjpuXNqZDvt9aTR1IjayB9WRK3rRTuSQVBczypqXCmNh91jQo_VDoh7tvweJXqerLvKbSXmILmnIIXuhM2RZLEZQD3ZZq4dlkA=w2400" alt="TAP NSCC1" style="width:100%">
+  <div class="text">TAP at NSCC 1</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 4</div>
+  <img src="https://lh3.googleusercontent.com/nB4usQDTZkT_u84_jxt2kW2QrgWWlBco1sCMUCJMqmsCJDIkM9iv89MQNP0ira6SvuxV2mbRf8oLmDDLwC0dmQqL7ty7PCecQaKt_S7OeM8aolU0pvYzxgLYWdu5BdUKZ1z68_uHYQ=w2400" alt="TAP NSCC2" style="width:100%">
+  <div class="text">TAP at NSCC 2</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 4</div>
+  <img src="https://lh3.googleusercontent.com/917-64Ny1eGObhqxOC5pivHRbrKrmlQjIZlngLRNTncC7GfO1qJ_hJgFFB_ycpPY2LUtcTliGOKw4jDH0DkglSFnwwm42AxILqzzSIfKK8fJzIzGQnDQVuXax9MIQYJxCEWbF4efDw=w2400" style="width:100%" alt="TAP XMAS">
+  <div class="text">Holidays with TAP</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 4</div>
+  <img src="https://lh3.googleusercontent.com/kQ2ojLEbVgFvwZZc8XrLZ3azPaAox408sObQ-3tQEvXou4W0mZ5kpMCVWhnm7BHEv3hznBaLGXtYmXFgtEzp0lT30Y8TQH11xLjcHQfgOKpEF4nnD7Z_YY2dBV3Xyqbwin3Mk_Q8KQ=w2400" style="width:100%" alt="Tap at NSCSC">
+  <div class="text">TAP at NSCSC</div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+  <span class="dot" onclick="currentSlide(4)"></span> 
+</div>
+		<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+	</section>
+	<footer>
+		<img
+         src="https://lh3.googleusercontent.com/4K4euRI3lKRU7OuS_2E1pXmc36vHKiZCJ8C3BTHce1fOgS15a5pIfhhP2y1aBTZi7PJe4wBx-qRwekhB2L4hT5gf4WJuqvzj_x0-TKOs9WZV8cfL-Z3W0XohZM5dZUtDBChqiSJu2Q=w2400"
+         alt="Makaigator Logo" style="width: 240px; height: 90px;">
+	</footer>
+</body>
+</html>
